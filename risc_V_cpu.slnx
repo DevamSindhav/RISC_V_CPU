@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="risc_V_cpu/risc_V_cpu.vcxproj" />
+  <Project Path="risc_V_cpu/risc_V_cpu.vcxproj" Id="7edaa4e4-bb9f-4cd0-947e-f9e54b3b4253" />
 </Solution>

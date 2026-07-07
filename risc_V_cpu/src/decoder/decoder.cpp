@@ -8,13 +8,16 @@ DecodedInstruction Decoder::decodeInstruction(uint32_t inst) {
 
 	DecodedInstruction decInst;
 
-	decInst.opcode	= inst & 0x7f; //0-6  opcode
+	decInst.opcode	= static_cast<Opcode>(inst & 0x7f); //0-6  opcode
 	decInst.rd = (inst >> 7) & 0x1f; //7-11 rd
 	decInst.funct3 = (inst >> 12) & 0x7; // 12-14 funct3
 	decInst.rs1 = (inst >> 15) & 0x1f; // 15-19 rs1
 	decInst.rs2 = (inst >> 20) & 0x1f; // 20-24 rs2
-	decInst.funct7 = (inst >> 25) & 0x7f; //25-31 funct3
+	decInst.funct7 = (inst >> 25) & 0x7f; //25-31 funct7
 
+	//the decoder seperates the bits such that they are always
+	//in the format that is required
+	//no headache of conversion in other modules
 	switch (decInst.opcode) {
 
 		case Opcode::R_TYPE :

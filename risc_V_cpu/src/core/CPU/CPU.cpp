@@ -4,8 +4,8 @@
 #include <iomanip> //for printing in hex
 #include <cstdint>
 
-CPU::CPU(Bus& busInstance , Decoder& decoderInstance) : 
-	bus(busInstance) , decoder(decoderInstance){
+CPU::CPU(Bus& busInstance) : 
+	bus(busInstance) {
 
 	//fill all regs with 0;
 	registers.fill(0);
@@ -57,7 +57,7 @@ void CPU::step() {
 			break;
 
 		case Opcode::I_TYPE :
-			executeI_TYPE(decInst)
+			executeI_TYPE(decInst);
 			break;
 
 		case Opcode::LOAD :
@@ -92,4 +92,218 @@ void CPU::step() {
 	} 
 	///PC updted in respective methods
 }
+
+void CPU::executeR_TYPE(const DecodedInstruction& decInst) {
+	
+	ALUop operation
+		= ALU::getControlSignal(decInst.opcode,
+								decInst.funct3,
+								decInst.funct7
+			);
+
+	uint32_t result 
+		= alu.compute(registers[decInst.rs1],
+						registers[decInst.rs2],
+						operation
+			);
+
+	//only write back id rd != 0th register
+
+	if (decInst.rd != 0x0) {
+		registers[decInst.rd] = result;
+	}
+
+	pc += 4;
+}
+
+
+void CPU::executeI_TYPE(const DecodedInstruction& decInst) {
+
+	ALUop operation
+		= ALU::getControlSignal(decInst.opcode,
+			decInst.funct3,
+			decInst.funct7
+		);
+
+	uint32_t result
+		= alu.compute(registers[decInst.rs1],
+			decInst.imm,
+			operation
+		);
+
+	//only write back id rd != 0th register
+
+	if (decInst.rd != 0x0) {
+		registers[decInst.rd] = result;
+	}
+
+	pc += 4;
+}
+
+
+void CPU::executeLOAD(const DecodedInstruction& decInst) {
+
+	//address calculation
+	//need to cast immediate field to int32_t to retain its sign
+	uint32_t effAdd = alu.compute(registers[decInst.rs1] , decInst.imm, ALUop::ADD);
+	uint32_t result;
+
+
+	switch (decInst.funct3) {
+
+	case 0x0:
+		//LB load byte only fist 8 bit with sign
+		result = uint32_t(int8_t( bus.readByte(effAdd)));
+		break;
+
+	case 0x1:
+		//LH load half word 16 bits with sign
+		result = uint32_t(int16_t(bus.readByte(effAdd) | (bus.readByte(effAdd + 1) << 8)));
+		break;
+
+	case 0x2:
+		//LW load worfd whole  word as is
+		result = bus.readWord(effAdd);
+		break;
+
+	case 0x4:
+		//LBU load byte without sign stuff 0s
+		result = uint32_t(bus.readByte(effAdd));
+		break;
+
+	case 0x5:
+		///LHU load half word unsigneed stuff 0s
+		result = uint32_t(bus.readByte(effAdd) | (bus.readByte(effAdd + 1) << 8));
+		break;
+	}
+
+	if (decInst.rd != 0x0) {
+		registers[decInst.rd] = result;
+	}
+
+	pc += 4;
+}
+
+void CPU::executeSTORE(const DecodedInstruction& decInst) {
+
+	//effAdd calculation same as LOAD
+	uint32_t effAdd = alu.compute(registers[decInst.rs1], decInst.imm, ALUop::ADD);
+	
+	switch (decInst.funct3) {
+		case 0x0:
+			//SB store byte
+			bus.writeByte(effAdd, uint8_t(registers[decInst.rs2]));
+			break;
+
+		case 0x1:
+			//SH store halfword
+			bus.writeByte(effAdd, uint8_t(registers[decInst.rs2]));
+			bus.writeByte(effAdd + 1, uint8_t(registers[decInst.rs2] >> 8));
+			break;
+
+		case 0x2:
+			bus.writeWord(effAdd, registers[decInst.rs2]);
+			break;
+	}
+	pc += 4;
+}
+
+void CPU::executeBRANCH(const DecodedInstruction& decInst) {
+
+	//we haev made sure that decoder returns a sign extended immediate value
+
+	uint32_t branchAdd = alu.compute(pc, decInst.imm, ALUop::ADD);
+
+	// if no condition fulfilled we simply go to next instruction in line
+	uint32_t tempPc = pc + 4; 
+
+	uint32_t num1 = registers[decInst.rs1];
+	uint32_t num2 = registers[decInst.rs2];
+
+	//now check which branch and update pc accordingly
+	switch (decInst.funct3) {
+
+		case 0x0 :
+			//BEQ branch if num1 == num2
+			if (alu.compute(num1, num2, ALUop::SUB) == 0x0)
+				tempPc = branchAdd;
+			break;
+
+		case 0x1 :
+			//BNE branch if num1 != num2
+			if (alu.compute(num1, num2, ALUop::SUB) != 0x0)
+				tempPc = branchAdd;
+			break;
+
+		case 0x4 :
+			//BLT branch if num1 < num2 signed
+			if (alu.compute(num1, num2, ALUop::SLT))
+				tempPc = branchAdd;
+			break;
+
+		case 0x5 :
+			//BGE branch if num1 >= num2 signed
+			if (!alu.compute(num1, num2, ALUop::SLT))
+				tempPc = branchAdd;
+			break;
+
+		case 0x6 :
+			//BLTU branch if num1 < num2 unsigned
+			if (alu.compute(num1, num2, ALUop::SLTU))
+				tempPc = branchAdd;
+			break;
+
+		case 0x7:
+			//BGEU branch if num1 >= num2 unsigned
+			if (!alu.compute(num1, num2, ALUop::SLTU))
+				tempPc = branchAdd;
+			break;
+	}
+
+	pc = tempPc;
+
+} 
+
+void CPU::executeJAL(const DecodedInstruction& decInst) {
+	//JAL an uncoditional jump with return address
+	//save the return address
+	//the return address is pc + 4 i.e. nect inst in sequence
+	// Only save the return address if the destination isn't x0
+	if(decInst.rd != 0x0)
+		registers[decInst.rd] = pc + 4;
+
+	//now we calculate the jump address and update the pc
+
+	pc = alu.compute(pc, decInst.imm, ALUop::ADD);
+
+} 
+
+void CPU::executeJALR(const DecodedInstruction& decInst) {
+
+	//JALR is used when we want to jump to a location
+	//which is calculated using index registers
+
+	//Link step or return address storage
+	if (decInst.rd != 0x0)
+		registers[decInst.rd] = pc + 4;
+
+	//Now the jum step
+	//calculate the jump Address
+	//mask last bit to zero
+
+	pc = alu.compute(registers[decInst.rs1], decInst.imm, ALUop::ADD) & ~1;
+
+} 
+
+void CPU::executeLUI(const DecodedInstruction& decInst) {
+
+	//LUI load upper immediate
+
+	if (decInst.rd != 0x0)
+		registers[decInst.rd] = decInst.imm;
+
+	pc += 4; //next inst.
+}
+
+
 

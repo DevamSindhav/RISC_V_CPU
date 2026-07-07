@@ -156,13 +156,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\bus\bus.cpp" />
-    <ClCompile Include="src\core\CPU.cpp" />
+    <ClCompile Include="src\core\ALU\ALU.cpp" />
+    <ClCompile Include="src\core\CPU\CPU.cpp" />
+    <ClCompile Include="src\decoder\decoder.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\memory\memory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\bus\bus.h" />
-    <ClInclude Include="src\core\CPU.h" />
+    <ClInclude Include="src\core\ALU\ALU.h" />
+    <ClInclude Include="src\core\CPU\CPU.h" />
+    <ClInclude Include="src\decoder\decoder.h" />
+    <ClInclude Include="src\ISA\decodedinstruction.h" />
+    <ClInclude Include="src\ISA\instructions.h" />
     <ClInclude Include="src\memory\memory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

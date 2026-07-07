@@ -1,9 +1,10 @@
-#pragma 
+#pragma once
 #include <cstdint>
+#include "instructions.h"
 
-struct DecodedInstruction {
+struct DecodedInstruction{
 
-	uint32_t opcode;
+	Opcode opcode;
 	uint32_t rd;
 	uint32_t rs1;
 	uint32_t rs2;

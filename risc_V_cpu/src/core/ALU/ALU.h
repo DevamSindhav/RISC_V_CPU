@@ -1,8 +1,8 @@
 #pragma once
-
+#include "..\..\ISA\instructions.h"
 #include <cstdint>
-
-enum ALUop {
+//enum class forces scoped access
+enum class ALUop {
 
 	ADD,
 	SUB,
@@ -23,6 +23,8 @@ public:
 
 	ALU();
 
-	void compute(uint32_t source1, uint32_t source2, ALUop operation);
+	uint32_t compute(uint32_t operandA, uint32_t operandB , ALUop operation);
 
+	//for decoding the ALUop from opecode , funct3 and funct7
+	static ALUop getControlSignal(Opcode opcode, uint32_t funct3, uint32_t funct7);
 };

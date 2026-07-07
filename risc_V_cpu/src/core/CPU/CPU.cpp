@@ -1,11 +1,14 @@
 
 #include "CPU.h"
+#include "..\..\system\Syscallhandler.h"
 #include <iostream>
 #include <iomanip> //for printing in hex
 #include <cstdint>
 
 CPU::CPU(Bus& busInstance) : 
 	bus(busInstance) {
+
+	isCpuHalted = false; //at boot obviously it should not stop
 
 	//fill all regs with 0;
 	registers.fill(0);
@@ -15,6 +18,8 @@ CPU::CPU(Bus& busInstance) :
 	pc = 0x0; // PC restart value;
 
 }
+
+bool CPU::isHalted() const { return isCpuHalted; }
 
 void CPU::printRegisters() {
 
@@ -87,6 +92,10 @@ void CPU::step() {
 			executeAUIPC(decInst);
 			break;
 
+		case Opcode::SYSTEM:
+			executeSYSTEM(decInst);
+			break;
+
 		default:
 			//custom exception from exception
 	} 
@@ -116,7 +125,6 @@ void CPU::executeR_TYPE(const DecodedInstruction& decInst) {
 	pc += 4;
 }
 
-
 void CPU::executeI_TYPE(const DecodedInstruction& decInst) {
 
 	ALUop operation
@@ -140,7 +148,6 @@ void CPU::executeI_TYPE(const DecodedInstruction& decInst) {
 	pc += 4;
 }
 
-
 void CPU::executeLOAD(const DecodedInstruction& decInst) {
 
 	//address calculation
@@ -158,7 +165,7 @@ void CPU::executeLOAD(const DecodedInstruction& decInst) {
 
 	case 0x1:
 		//LH load half word 16 bits with sign
-		result = uint32_t(int16_t(bus.readByte(effAdd) | (bus.readByte(effAdd + 1) << 8)));
+		result = uint32_t(int16_t(bus.readHalfWord(effAdd)));
 		break;
 
 	case 0x2:
@@ -173,7 +180,7 @@ void CPU::executeLOAD(const DecodedInstruction& decInst) {
 
 	case 0x5:
 		///LHU load half word unsigneed stuff 0s
-		result = uint32_t(bus.readByte(effAdd) | (bus.readByte(effAdd + 1) << 8));
+		result = uint32_t(bus.readHalfWord(effAdd));
 		break;
 	}
 
@@ -197,8 +204,7 @@ void CPU::executeSTORE(const DecodedInstruction& decInst) {
 
 		case 0x1:
 			//SH store halfword
-			bus.writeByte(effAdd, uint8_t(registers[decInst.rs2]));
-			bus.writeByte(effAdd + 1, uint8_t(registers[decInst.rs2] >> 8));
+			bus.writeHalfWord(effAdd, uint16_t(registers[decInst.rs2]));
 			break;
 
 		case 0x2:
@@ -305,5 +311,27 @@ void CPU::executeLUI(const DecodedInstruction& decInst) {
 	pc += 4; //next inst.
 }
 
+void CPU::executeAUIPC(const DecodedInstruction& decInst) {
 
+	//AUIPC add upper immediate to PC
 
+	if (decInst.rd != 0x0)
+		registers[decInst.rd] = alu.compute(pc, decInst.imm, ALUop::ADD);
+
+	pc += 4; //next inst.
+} 
+
+void CPU::executeSYSTEM(const DecodedInstruction& decInst) {
+
+	//two SYSTEM instructions ECALL and EBREAK
+
+	if (decInst.imm == 0x0)
+		//ECALL means immediate == 0
+		SysCallHandler::handleECALL(registers, isCpuHalted);
+
+	else if (decInst.imm == 0x1)
+		//EBREAK means immediate == 1
+		SysCallHandler::handleEBREAK(registers, pc);
+
+	pc += 4;
+}

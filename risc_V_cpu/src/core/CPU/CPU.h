@@ -17,6 +17,10 @@ private :
 
 	uint32_t pc; // program counter
 
+	//to keep track of the program 
+	// i.e. to exit the program execution loop
+	bool isCpuHalted;
+
 	//Decoder connection
 	Decoder decoder;
 
@@ -31,6 +35,8 @@ private :
 public :
 
 	CPU(Bus& busInstance);
+
+	bool isHalted() const;
 
 	//helper method to print CPU registers
 	void printRegisters();
@@ -48,5 +54,6 @@ public :
 	void executeJALR(const DecodedInstruction& decInst);
 	void executeLUI(const DecodedInstruction& decInst);
 	void executeAUIPC(const DecodedInstruction& decInst);
+	void executeSYSTEM(const DecodedInstruction& decInst);
 
 };

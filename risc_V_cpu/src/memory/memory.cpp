@@ -8,8 +8,12 @@ Memory::Memory() {
 
 uint8_t Memory::readByte(uint32_t address) {
 
-	return Memory::ram[address];
+	return ram[address];
 
+}
+
+uint16_t Memory::readHalfWord(uint32_t address) {
+	return ram[address] | (uint16_t(ram[address + 1]) << 8);
 }
 
 //32-bit word
@@ -29,6 +33,14 @@ uint32_t Memory::readWord(uint32_t address) {
 void Memory::writeByte(uint32_t address, uint8_t value) {
 
 	ram[address] = value;
+
+}
+
+void Memory::writeHalfWord(uint32_t address, uint16_t value) {
+
+	ram[address] = uint8_t(value);
+
+	ram[address + 1] = uint8_t(value >> 8);
 
 }
 

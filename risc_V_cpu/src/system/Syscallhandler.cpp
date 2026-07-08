@@ -1,4 +1,5 @@
 #include "Syscallhandler.h"
+#include "../exception/HardwareException.h"
 #include<iomanip>
 
 SysCallHandler::SysCallHandler(){}
@@ -20,8 +21,7 @@ void SysCallHandler::handleECALL(std::array<uint32_t, 32>& registers, bool& isCp
 			break;
 
 		default:
-			std::cout << "Invalid System call....";
-			break;
+			throw SysCallException("Invalid System call....(in SysCallHandler handleECALL)");
 	}
 
 }

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "..\..\bus\bus.h"
-#include "..\..\ISA\decodedinstruction.h"
-#include "..\..\decoder\decoder.h"
-#include "..\ALU\ALU.h"
+#include "../../bus/bus.h"
+#include "../../ISA/decodedinstruction.h"
+#include "../../decoder/decoder.h"
+#include "../ALU/ALU.h"
 
 #include <cstdint> //for uint32_t
 #include <array>

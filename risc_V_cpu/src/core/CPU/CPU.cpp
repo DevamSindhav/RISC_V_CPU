@@ -1,6 +1,6 @@
 
 #include "CPU.h"
-#include "..\..\system\Syscallhandler.h"
+#include "../../system/SysCallHandler.h"
 #include <iostream>
 #include <iomanip> //for printing in hex
 #include <cstdint>

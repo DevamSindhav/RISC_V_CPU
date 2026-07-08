@@ -1,5 +1,5 @@
 #pragma once
-#include "..\..\ISA\instructions.h"
+#include "../../ISA/instructions.h"
 #include <cstdint>
 //enum class forces scoped access
 enum class ALUop {

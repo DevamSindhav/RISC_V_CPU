@@ -1,4 +1,5 @@
 #include "decoder.h"
+#include "../exception/HardwareException.h"
 
 #include <cstdint>
 
@@ -57,7 +58,7 @@ DecodedInstruction Decoder::decodeInstruction(uint32_t inst) {
 			break;
 		
 		default :
-			//error raised custom error?
+			throw DecoderException("Invalid Instruction... (in Decoder decodeInstruction)");
 
 	}
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
-#include "..\ISA\instructions.h"
-#include "..\ISA\decodedinstruction.h"
+#include "../ISA/instructions.h"
+#include "../ISA/decodedinstruction.h"
 
 class Decoder {
 

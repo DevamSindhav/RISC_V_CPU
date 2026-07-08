@@ -33,6 +33,9 @@
     <ClCompile Include="src\core\ALU\ALU.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\system\Syscallhandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\CPU\CPU.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\core\ALU\ALU.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\Syscallhandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -161,6 +161,7 @@
     <ClCompile Include="src\decoder\decoder.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\memory\memory.cpp" />
+    <ClCompile Include="src\system\Syscallhandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\bus\bus.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="src\ISA\decodedinstruction.h" />
     <ClInclude Include="src\ISA\instructions.h" />
     <ClInclude Include="src\memory\memory.h" />
+    <ClInclude Include="src\system\Syscallhandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

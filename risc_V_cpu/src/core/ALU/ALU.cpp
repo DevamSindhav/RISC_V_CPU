@@ -1,5 +1,5 @@
 #include "ALU.h"
-
+#include "../../exception/HardwareException.h"
 #include <cstdint>
 
 
@@ -41,7 +41,7 @@ uint32_t ALU::compute(uint32_t operandA, uint32_t operandB, ALUop operation) {
 			return operandA < operandB ? 1 : 0;
 
 		default:
-			//exception.
+			throw DecoderException("Invalid Operation... (in ALU compute)");
 	}
 	return 0x0;
 }
@@ -77,17 +77,8 @@ ALUop ALU::getControlSignal(Opcode opcode, uint32_t funct3, uint32_t funct7) {
 			if (funct3 == 0x7) return ALUop::AND;
 			break;
 
-		case Opcode::LOAD :
-		case Opcode::STORE :
-		case Opcode::LUI :
-		case Opcode::AUIPC :
-			return ALUop::ADD;
-
-
-		//BRANCH,JAL and JALR operation ahndled in their own methods
-
 		default :
-			//exception thrown?
+			throw DecoderException("Invalid Operation... (in ALU getControlSignal)");
 
 	}
 

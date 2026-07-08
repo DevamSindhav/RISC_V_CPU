@@ -159,19 +159,22 @@
     <ClCompile Include="src\core\ALU\ALU.cpp" />
     <ClCompile Include="src\core\CPU\CPU.cpp" />
     <ClCompile Include="src\decoder\decoder.cpp" />
+    <ClCompile Include="src\loader\Loader.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\memory\memory.cpp" />
-    <ClCompile Include="src\system\Syscallhandler.cpp" />
+    <ClCompile Include="src\system\SysCallHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\bus\bus.h" />
     <ClInclude Include="src\core\ALU\ALU.h" />
     <ClInclude Include="src\core\CPU\CPU.h" />
     <ClInclude Include="src\decoder\decoder.h" />
+    <ClInclude Include="src\exception\HardwareException.h" />
     <ClInclude Include="src\ISA\decodedinstruction.h" />
     <ClInclude Include="src\ISA\instructions.h" />
+    <ClInclude Include="src\loader\Loader.h" />
     <ClInclude Include="src\memory\memory.h" />
-    <ClInclude Include="src\system\Syscallhandler.h" />
+    <ClInclude Include="src\system\SysCallHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,8 @@
 
 #include "CPU.h"
 #include "../../system/SysCallHandler.h"
+#include "../../exception/HardwareException.h"
+
 #include <iostream>
 #include <iomanip> //for printing in hex
 #include <cstdint>
@@ -97,7 +99,7 @@ void CPU::step() {
 			break;
 
 		default:
-			//custom exception from exception
+			throw DecoderException("Invalid instruction....(in CPU step)");
 	} 
 	///PC updted in respective methods
 }

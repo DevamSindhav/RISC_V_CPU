@@ -7,6 +7,6 @@
 
 namespace Loader {
 
-	static void loadProgram(Bus& bus, const std::string& filePath);
+	void loadProgram(Bus& bus, const std::string& filePath);
 
 };

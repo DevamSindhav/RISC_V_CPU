@@ -28,6 +28,7 @@ DecodedInstruction Decoder::decodeInstruction(uint32_t inst) {
 		case Opcode::I_TYPE :
 		case Opcode::LOAD	:
 		case Opcode::JALR	:
+		case Opcode::SYSTEM :
 			decInst.imm = ((int32_t)inst >> 20);
 			break;
 
@@ -56,6 +57,7 @@ DecodedInstruction Decoder::decodeInstruction(uint32_t inst) {
 		case Opcode::AUIPC :
 			decInst.imm = inst & 0xfffff000;
 			break;
+
 		
 		default :
 			throw DecoderException("Invalid Instruction... (in Decoder decodeInstruction)");

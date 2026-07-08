@@ -33,7 +33,10 @@
     <ClCompile Include="src\core\ALU\ALU.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\system\Syscallhandler.cpp">
+    <ClCompile Include="src\system\SysCallHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\loader\Loader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,7 +62,13 @@
     <ClInclude Include="src\core\ALU\ALU.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\system\Syscallhandler.h">
+    <ClInclude Include="src\system\SysCallHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\exception\HardwareException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\loader\Loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

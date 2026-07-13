@@ -199,6 +199,13 @@
     <None Include="src\TEST\test13_memory_lb_sb.asm" />
     <None Include="src\TEST\test14_utype.asm" />
     <None Include="src\TEST\test15_jump.asm" />
+    <None Include="src\TEST\test16_sltu_sltiu.asm" />
+    <None Include="src\TEST\test17_bltu.asm" />
+    <None Include="src\TEST\test18_bgeu.asm" />
+    <None Include="src\TEST\test19_halfword_sh_lh.asm" />
+    <None Include="src\TEST\test20_unsigned_load.asm" />
+    <None Include="src\TEST\test21_x0_hardwire.asm" />
+    <None Include="src\TEST\test22_imm_boundary.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

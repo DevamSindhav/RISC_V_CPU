@@ -14,7 +14,7 @@ void Memory::reset() {
 
 uint8_t Memory::readByte(uint32_t address) {
 
-	if (address > 0x3ffff)
+	if (address > 0xfffff) //4MB limit
 		throw MemoryException("Address out of Bound....(in Memory readByte)");
 
 	return ram[address];

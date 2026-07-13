@@ -137,5 +137,26 @@
     <None Include="src\TEST\test15_jump.asm">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="src\TEST\test16_sltu_sltiu.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test17_bltu.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test18_bgeu.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test19_halfword_sh_lh.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test20_unsigned_load.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test21_x0_hardwire.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test22_imm_boundary.asm">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -13,3 +13,10 @@ C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test12_
 C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test13_memory_lb_sb.asm
 C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test14_utype.asm
 C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test15_jump.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test16_sltu_sltiu.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test17_bltu.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test18_bgeu.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test19_halfword_sh_lh.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test20_unsigned_load.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test21_x0_hardwire.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test22_imm_boundary.asm

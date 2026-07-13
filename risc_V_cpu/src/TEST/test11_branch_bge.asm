@@ -1,0 +1,12 @@
+ADDI x1, x0, 9
+ADDI x2, x0, 4
+BGE x1, x2, PASS
+
+FAIL:
+ADDI x31, x0, 0
+EBREAK
+
+PASS:
+ADDI x31, x0, 1
+ADDI x17, x0, 10
+ECALL

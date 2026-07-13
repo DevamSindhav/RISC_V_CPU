@@ -1,0 +1,15 @@
+ADDI x1, x0, 10
+ANDI x2, x1, 8
+ORI x3, x2, 2
+XORI x4, x3, 6
+ADDI x30 , x0 , 12
+BEQ x4, x30, PASS
+
+FAIL:
+ADDI x31, x0, 0
+EBREAK
+
+PASS:
+ADDI x31, x0, 1
+ADDI x17, x0, 10
+ECALL

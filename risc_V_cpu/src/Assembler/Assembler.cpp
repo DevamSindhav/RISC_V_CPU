@@ -257,6 +257,12 @@ std::string Assembler::secondPass(const std::string& filePath, std::unordered_ma
 				}
 				break;
 
+			case InstructionType::I_SHIFT:
+				decInst.rd = parseRegister(tokens[1], lineNum);
+				decInst.rs1 = parseRegister(tokens[2], lineNum);
+				decInst.imm = parseImmediate(tokens[3], currAddress, symbolTable, lineNum);
+				break;
+
 			case InstructionType::S:
 				decInst.rs2 = parseRegister(tokens[1], lineNum);
 				decInst.imm = parseImmediate(tokens[2], currAddress, symbolTable, lineNum);

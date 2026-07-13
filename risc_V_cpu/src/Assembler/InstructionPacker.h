@@ -16,6 +16,7 @@ namespace InstructionPacker {
 	uint32_t packUtype(DecodedInstruction& decInst);
 	uint32_t packJtype(DecodedInstruction& decInst);
 	uint32_t packSYSTEM(DecodedInstruction& decInst);
+	uint32_t packI_SHIFT_type(DecodedInstruction& decInst);
 
 	uint32_t packInstruction(DecodedInstruction& decInst , InstructionType intType);
 

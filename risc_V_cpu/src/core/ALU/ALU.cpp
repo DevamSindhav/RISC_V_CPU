@@ -22,7 +22,7 @@ uint32_t ALU::compute(uint32_t operandA, uint32_t operandB, ALUop operation) {
 			return operandA >> (operandB & 0x1f);
 
 		case ALUop::SRA :
-			//for a arithmetic shift we nwwd this
+			//for a arithmetic shift we need this
 			return static_cast<uint32_t>(static_cast<int32_t>(operandA) >> (operandB & 0x1f));
 
 		case ALUop::XOR :

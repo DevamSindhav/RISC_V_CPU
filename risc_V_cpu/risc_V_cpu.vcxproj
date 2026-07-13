@@ -183,7 +183,22 @@
     <ClInclude Include="src\system\SysCallHandler.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\TEST\program.asm" />
+    <None Include="src\TEST\programs.txt" />
+    <None Include="src\TEST\test01_rtype_add_sub.asm" />
+    <None Include="src\TEST\test02_rtype_and_or.asm" />
+    <None Include="src\TEST\test03_rtype_xor.asm" />
+    <None Include="src\TEST\test04_rtype_shift.asm" />
+    <None Include="src\TEST\test05_itype_addi.asm" />
+    <None Include="src\TEST\test06_itype_logic.asm" />
+    <None Include="src\TEST\test07_itype_shift_left_right.asm" />
+    <None Include="src\TEST\test08_itype_srai.asm" />
+    <None Include="src\TEST\test09_branch_beq_bne.asm" />
+    <None Include="src\TEST\test10_branch_blt.asm" />
+    <None Include="src\TEST\test11_branch_bge.asm" />
+    <None Include="src\TEST\test12_memory_lw_sw.asm" />
+    <None Include="src\TEST\test13_memory_lb_sb.asm" />
+    <None Include="src\TEST\test14_utype.asm" />
+    <None Include="src\TEST\test15_jump.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

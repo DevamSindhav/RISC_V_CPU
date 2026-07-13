@@ -11,7 +11,8 @@ enum class InstructionType{
 	B ,
 	U ,
 	J ,
-	SYSTEM
+	SYSTEM,
+	I_SHIFT
 };
 
 struct InstructionMetadata {
@@ -46,9 +47,11 @@ inline const std::unordered_map<std::string, InstructionMetadata> INSTRUCTION_TA
 	{"XORI" , {InstructionType::I ,Opcode::I_TYPE,0x04 ,0x00 , 3}},
 	{"ORI" , {InstructionType::I , Opcode::I_TYPE,0x06,0x00 , 3}},
 	{"ANDI" , {InstructionType::I ,Opcode::I_TYPE,0x07 ,0x00 , 3}},
-	{"SLLI" , {InstructionType::I ,Opcode::I_TYPE,0x01,0x00 , 3 }},
-	{"SRLI" , {InstructionType::I ,Opcode::I_TYPE,0x05,0x00 , 3 }},
-	{"SRAI" , {InstructionType::I ,Opcode::I_TYPE,0x05 ,0x20 , 3}},
+
+	//Special case I_shifts
+	{"SLLI" , {InstructionType::I_SHIFT ,Opcode::I_TYPE,0x01,0x00 , 3 }},
+	{"SRLI" , {InstructionType::I_SHIFT ,Opcode::I_TYPE,0x05,0x00 , 3 }},
+	{"SRAI" , {InstructionType::I_SHIFT ,Opcode::I_TYPE,0x05 ,0x20 , 3}},
 
 
 	//LOAD but I-TYPE

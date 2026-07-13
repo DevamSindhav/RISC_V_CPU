@@ -91,6 +91,51 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\TEST\program.asm" />
+    <None Include="src\TEST\programs.txt" />
+    <None Include="src\TEST\test01_rtype_add_sub.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test02_rtype_and_or.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test03_rtype_xor.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test04_rtype_shift.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test05_itype_addi.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test07_itype_shift_left_right.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test06_itype_logic.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test08_itype_srai.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test09_branch_beq_bne.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test10_branch_blt.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test11_branch_bge.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test12_memory_lw_sw.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test13_memory_lb_sb.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test14_utype.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\TEST\test15_jump.asm">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

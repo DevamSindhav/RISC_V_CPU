@@ -1,0 +1,21 @@
+ADDI x1, x0, 8
+ADDI x2, x0, 1
+SLL x3, x2, x1
+SRL x4, x3, x1
+ADDI x5, x0, -8
+SRA x6, x5, x2
+ADDI x7, x0, -4
+BEQ x4, x2, CHECK
+JAL x0, FAIL
+
+CHECK:
+BEQ x6, x7, PASS
+
+FAIL:
+ADDI x31, x0, 0
+EBREAK
+
+PASS:
+ADDI x31, x0, 1
+ADDI x17, x0, 10
+ECALL

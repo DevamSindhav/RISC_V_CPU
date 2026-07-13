@@ -1,0 +1,13 @@
+LUI x1, 1
+AUIPC x2, 0
+LUI x3, 1
+BEQ x1, x3, PASS
+
+FAIL:
+ADDI x31, x0, 0
+EBREAK
+
+PASS:
+ADDI x31, x0, 1
+ADDI x17, x0, 10
+ECALL

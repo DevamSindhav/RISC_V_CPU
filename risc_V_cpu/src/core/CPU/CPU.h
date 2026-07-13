@@ -36,6 +36,8 @@ public :
 
 	CPU(Bus& busInstance);
 
+	uint32_t getRegister(int reg);
+
 	bool isHalted() const;
 
 	void reset();

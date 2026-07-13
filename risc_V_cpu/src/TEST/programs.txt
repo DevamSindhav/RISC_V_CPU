@@ -1,0 +1,15 @@
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test01_rtype_add_sub.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test02_rtype_and_or.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test03_rtype_xor.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test04_rtype_shift.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test05_itype_addi.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test06_itype_logic.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test07_itype_shift_left_right.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test08_itype_srai.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test09_branch_beq_bne.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test10_branch_blt.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test11_branch_bge.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test12_memory_lw_sw.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test13_memory_lb_sb.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test14_utype.asm
+C:/Users/ASUS/OneDrive/Desktop/Risc_V_CPU/risc_V_cpu/risc_V_cpu/src/TEST/test15_jump.asm

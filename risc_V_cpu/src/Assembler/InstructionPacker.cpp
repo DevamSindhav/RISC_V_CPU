@@ -14,6 +14,11 @@ uint32_t InstructionPacker::packInstruction(DecodedInstruction& decInst , Instru
 			macInst = InstructionPacker::packItype(decInst);
 			break;
 
+		// to specifically distinguish the SRAI AND SRLI 
+		case InstructionType::I_SHIFT:
+			macInst = InstructionPacker::packI_SHIFT_type(decInst);
+			break;
+
 		case InstructionType::S:
 			macInst = InstructionPacker::packStype(decInst);
 			break;
@@ -101,4 +106,13 @@ uint32_t InstructionPacker::packSYSTEM(DecodedInstruction& decInst) {
 
 	return uint32_t(decInst.opcode) |
 		(decInst.funct7 << 20);
+}
+
+uint32_t InstructionPacker::packI_SHIFT_type(DecodedInstruction& decInst) {
+	return static_cast<uint32_t>(decInst.opcode) |
+		(decInst.rd << 7) |
+		(decInst.funct3 << 12) |
+		(decInst.rs1 << 15) |
+		((decInst.imm & 0x1F) << 20) |  // Only the bottom 5 bits of the immediate
+		(decInst.funct7 << 25);         // Safely drop in the 0x20 or 0x00
 }

@@ -1,0 +1,17 @@
+ADDI x1, x0, 5
+ADDI x2, x0, 5
+BEQ x1, x2, NEXT
+JAL x0, FAIL
+
+NEXT:
+BNE x1, x2, FAIL
+JAL x0, PASS
+
+FAIL:
+ADDI x31, x0, 0
+EBREAK
+
+PASS:
+ADDI x31, x0, 1
+ADDI x17, x0, 10
+ECALL

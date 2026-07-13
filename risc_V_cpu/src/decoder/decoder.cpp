@@ -42,7 +42,7 @@ DecodedInstruction Decoder::decodeInstruction(uint32_t inst) {
 			decInst.imm = ((int32_t)(inst & 0x80000000) >> 19) |
 							((inst & 0x00000080) << 4) |
 							((inst & 0x00000f00) >> 7) |
-							((inst & 0x7f000000) >> 20);
+							((inst & 0x7E000000) >> 20);
 			break;
 
 		case Opcode::JAL :

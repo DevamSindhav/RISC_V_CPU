@@ -32,6 +32,15 @@ void CPU::reset() {
 	registers.fill(0);
 }
 
+uint32_t CPU::getRegister(int reg) {
+
+	if (reg < 0 || reg > 31) {
+		throw HardwareException("Register out of bound....(in CPU getRegister).");
+	}
+
+	return registers[reg];
+}
+
 void CPU::printRegisters() {
 
 	std::cout << "---- CPU STATE ----\n";
@@ -164,7 +173,7 @@ void CPU::executeLOAD(const DecodedInstruction& decInst) {
 	//address calculation
 	//need to cast immediate field to int32_t to retain its sign
 	uint32_t effAdd = alu.compute(registers[decInst.rs1] , decInst.imm, ALUop::ADD);
-	uint32_t result;
+	uint32_t result = 0x0;
 
 
 	switch (decInst.funct3) {

@@ -4,6 +4,9 @@
 #include "core/CPU/CPU.h"
 #include "loader/Loader.h"
 #include "exception/HardwareException.h"
+#include "exception/AssemblerException.h"
+
+#include "Assembler/Assembler.h"
 
 #include<iostream>
 
@@ -26,16 +29,26 @@ int main() {
 
 	std::string filePath;
 
-	std::cout << "Enter file path to execute (.hex) : ";
+	std::cout << "Enter file path to execute (.asm) : ";
 	std::cin >> filePath;
 	try {
-		Loader::loadProgram(bus, filePath);
+
+		std::string outPath = Assembler::assemble(filePath);
+
+		Loader::loadProgram(bus, outPath);
 
 		while (!cpu.isHalted()) {
 			cpu.step();
 		}
 
 		std::cout << "\nProgram executed successfully!!\n";
+
+		cpu.printRegisters();
+	}
+	catch (const AssemblerException& ae) {
+		std::cout << ae.what() << std::endl;
+
+		std::cout << "\nCPU execution stopped due to an error.....\n";
 
 		cpu.printRegisters();
 	}

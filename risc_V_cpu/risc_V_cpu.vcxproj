@@ -155,6 +155,8 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Assembler\Assembler.cpp" />
+    <ClCompile Include="src\Assembler\InstructionPacker.cpp" />
     <ClCompile Include="src\bus\bus.cpp" />
     <ClCompile Include="src\core\ALU\ALU.cpp" />
     <ClCompile Include="src\core\CPU\CPU.cpp" />
@@ -165,16 +167,23 @@
     <ClCompile Include="src\system\SysCallHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Assembler\Assembler.h" />
+    <ClInclude Include="src\Assembler\InstructionPacker.h" />
+    <ClInclude Include="src\Assembler\InstructionTable.h" />
     <ClInclude Include="src\bus\bus.h" />
     <ClInclude Include="src\core\ALU\ALU.h" />
     <ClInclude Include="src\core\CPU\CPU.h" />
     <ClInclude Include="src\decoder\decoder.h" />
+    <ClInclude Include="src\exception\AssemblerException.h" />
     <ClInclude Include="src\exception\HardwareException.h" />
     <ClInclude Include="src\ISA\decodedinstruction.h" />
     <ClInclude Include="src\ISA\instructions.h" />
     <ClInclude Include="src\loader\Loader.h" />
     <ClInclude Include="src\memory\memory.h" />
     <ClInclude Include="src\system\SysCallHandler.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\TEST\program.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

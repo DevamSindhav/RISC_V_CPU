@@ -7,6 +7,11 @@ Memory::Memory() {
 	ram.resize(4 * 1024 * 1024, 0);
 }
 
+void Memory::reset() {
+
+	std::fill(ram.begin(), ram.end(), 0);
+}
+
 uint8_t Memory::readByte(uint32_t address) {
 
 	if (address > 0x3ffff)

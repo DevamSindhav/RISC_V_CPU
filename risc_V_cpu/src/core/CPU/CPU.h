@@ -38,6 +38,8 @@ public :
 
 	bool isHalted() const;
 
+	void reset();
+
 	//helper method to print CPU registers
 	void printRegisters();
 

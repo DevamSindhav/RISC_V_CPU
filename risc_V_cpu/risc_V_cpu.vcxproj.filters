@@ -39,6 +39,12 @@
     <ClCompile Include="src\loader\Loader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Assembler\InstructionPacker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Assembler\Assembler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\CPU\CPU.h">
@@ -71,5 +77,20 @@
     <ClInclude Include="src\loader\Loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\exception\AssemblerException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Assembler\InstructionPacker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Assembler\Assembler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Assembler\InstructionTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\TEST\program.asm" />
   </ItemGroup>
 </Project>

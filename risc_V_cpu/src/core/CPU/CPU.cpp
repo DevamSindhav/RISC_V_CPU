@@ -23,6 +23,15 @@ CPU::CPU(Bus& busInstance) :
 
 bool CPU::isHalted() const { return isCpuHalted; }
 
+void CPU::reset() {
+
+	pc = 0x0;
+	
+	isCpuHalted = false;
+
+	registers.fill(0);
+}
+
 void CPU::printRegisters() {
 
 	std::cout << "---- CPU STATE ----\n";

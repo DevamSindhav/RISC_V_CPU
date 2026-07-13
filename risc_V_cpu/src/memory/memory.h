@@ -16,6 +16,8 @@ public :
 
 	Memory();
 
+	void reset();
+
 	//read funcs
 	uint8_t readByte(uint32_t address);
 
